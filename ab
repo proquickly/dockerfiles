@@ -1,0 +1,6 @@
+#!/bin/zsh
+docker stop andyconda && docker rm andyconda
+docker build -f /Users/andy/ws/dockerfiles/Dockerfile.conda -t andyconda .
+cd ~/ws && docker run -it -p 8888:8888 -p 6006:6006 \
+    -d -v $(pwd)/notebooks:/notebooks \
+    python_data_science_container:anaconda
